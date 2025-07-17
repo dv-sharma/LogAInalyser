@@ -24,19 +24,19 @@ def analyze_logs_with_mistral(logs):
     model_id = "mistral.mistral-7b-instruct-v0:2"
     bedrock = boto3.client("bedrock-runtime", region_name="us-east-1")
 
-    prompt = f"""
-You are a Site Reliability engineer. Analyze the following logs and answer:
+    prompt = f"""<s>[INST]
+    
+You are a Site Reliability Engineer. Analyze the following logs and answer:
 1. What failed?
 2. What is the likely root cause?
 3. What should be done to fix it?
 4. Suggest any relevant bash commands.
-
 Logs:
 {logs}
-"""
+[/INST]"""
 
     body = {
-        "prompt": f"\n\nHuman:\n{prompt.strip()}\n\nAssistant:",
+        "prompt": f"{prompt.strip()}",
         "max_tokens": 1024,
         "temperature": 0.2
     }
