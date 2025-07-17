@@ -32,7 +32,17 @@ def get_logs():
 
     for group in response['logGroups']:
         print(group['logGroupName'])  """
-
+## For filtering the logs filter_log_events can be used as coded below:
+def get_logs():
+    logs_client = boto3.client("logs", region_name="us-east-1")
+    response = logs_client.filter_log_events(
+        logGroupName='syslog',  
+        startTime=start_time_ms,
+        endTime=end_time_ms,
+        filterPattern='"nginx"'
+    )
+    return response
+    
 if __name__ == "__main__":
     get_logs()
 
