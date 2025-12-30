@@ -17,9 +17,8 @@ resource "aws_instance" "ubuntu_test" {
 
               cat <<'CONFIG' > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
               ${templatefile("${path.module}/code/cloudwatch-agent.json", {
-                aws_region      = var.aws_region
-                log_group_name  = aws_cloudwatch_log_group.syslog.name
-                log_stream_name = var.cloudwatch_log_stream_name
+                aws_region     = var.aws_region
+                log_group_name = aws_cloudwatch_log_group.syslog.name
               })}
               CONFIG
 
