@@ -45,3 +45,15 @@ variable "sns_notification_email" {
   type        = string
   default     = "divyam.sharma3@gmail.com"
 }
+
+variable "ec2_name_tag" {
+  description = "Name tag for the EC2 instance."
+  type        = string
+  default     = "ubuntu-test"
+}
+
+variable "cloudwatch_log_stream_name" {
+  description = "CloudWatch log stream name pattern for syslog."
+  type        = string
+  default     = "{instance_id}"
+}
