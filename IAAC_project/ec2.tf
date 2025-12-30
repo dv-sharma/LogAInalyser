@@ -30,7 +30,7 @@ resource "aws_instance" "ubuntu_test" {
               USER_DATA
 
   tags = {
-    Name = "ubuntu-test"
+    Name = var.ec2_name_tag
   }
 
   lifecycle {
