@@ -190,6 +190,7 @@ resource "aws_instance" "log_shipper" {
     apt-get update -y
     apt-get install -y wget ca-certificates
     apt-get install python3-pip -y
+    pip install boto3
 
     # Install CloudWatch Agent (Ubuntu amd64)
     CLOUDWATCH_DEB="/tmp/amazon-cloudwatch-agent.deb"
